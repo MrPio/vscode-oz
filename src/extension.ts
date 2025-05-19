@@ -37,7 +37,9 @@ class OzOPIServer {
 
 	private display(channel: vscode.OutputChannel, shouldFocus?: () => boolean) {
 		return function (data: string | Buffer) {
-			channel.show(shouldFocus && shouldFocus());
+			if(vscode.workspace.getConfiguration(OZ_LANGUAGE).get("showOutput", true)){
+				channel.show(shouldFocus && shouldFocus());
+			}
 			channel.append(data.toString());
 		}
 	}
@@ -88,7 +90,7 @@ class OzOPIServer {
 
 			// Dump compiler output in the compiler channel
 			this.compiler.on('data', this.display(this.compilerChannel,
-				() => vscode.workspace.getConfiguration(OZ_LANGUAGE).get("showCompilerOutput", true)
+				() => vscode.workspace.getConfiguration(OZ_LANGUAGE).get("focusCompilerOutput", true)
 			));
 
 			// parse the exceptions with the linter

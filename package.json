@@ -71,10 +71,15 @@
                     "default": false,
                     "description": "Enables the linting of Oz files"
                 },
-                "oz.showCompilerOutput": {
+                "oz.showOutput": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Shows the compiler output in the output tab"
+                    "description": "Shows the output in the output tab after feeding"
+                },
+                "oz.focusCompilerOutput": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Focuses the compiler output in the output tab"
                 }
             }
         },
